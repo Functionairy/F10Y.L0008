@@ -8,14 +8,11 @@
     <Version>1.0.0</Version>
     <Authors>DCoats</Authors>
     <Copyright>Copyright (c) Functionairy 2025</Copyright>
-    <Description>.NET infrastructure library, Functionairy-opinioned but generally applicable.</Description>
+    <Description>IHasX/IWithX types library for the F10Y.L0008 Functionairy-opinioned, but generally applicable, .NET Standard 2.1 foundation library.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0008.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\F10Y.L0008.T001\F10Y.L0008.T001.csproj" />
-    <ProjectReference Include="..\..\..\F10Y.Z0002\source\F10Y.Z0002\F10Y.Z0002.csproj" />
-    <ProjectReference Include="..\F10Y.L0008.Z000\F10Y.L0008.Z000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.T0009\source\F10Y.T0009\F10Y.T0009.csproj" />
   </ItemGroup>
 </Project>
