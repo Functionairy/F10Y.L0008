@@ -14,6 +14,10 @@
     <RepositoryUrl>https://github.com/Functionairy/F10Y.L0008.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\F10Y.L0001\source\F10Y.L0001.X000\F10Y.L0001.X000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0003\source\F10Y.L0003\F10Y.L0003.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.T0004\source\F10Y.T0004\F10Y.T0004.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.T0018\source\F10Y.T0018.T000\F10Y.T0018.T000.csproj" />
     <ProjectReference Include="..\F10Y.L0008.T001\F10Y.L0008.T001.csproj" />
     <ProjectReference Include="..\..\..\F10Y.Z0002\source\F10Y.Z0002\F10Y.Z0002.csproj" />
     <ProjectReference Include="..\F10Y.L0008.Z000\F10Y.L0008.Z000.csproj" />
