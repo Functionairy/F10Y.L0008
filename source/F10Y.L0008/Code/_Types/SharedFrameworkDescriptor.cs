@@ -13,7 +13,9 @@ namespace F10Y.L0008
     /// It contains a runtime target name instead of a shared framework name.
     /// </remarks>
     [DataTypeMarker]
-    public class SharedFrameworkDescriptor : IEquatable<SharedFrameworkDescriptor>
+    public class SharedFrameworkDescriptor :
+        IEquatable<SharedFrameworkDescriptor>,
+        IComparable<SharedFrameworkDescriptor>
     {
         /// <summary>
         /// Values like "Microsoft.NETCore.App", see <see cref="Z000.ISharedFrameworkNames"/>.
@@ -49,6 +51,9 @@ namespace F10Y.L0008
 
         public override int GetHashCode()
             => Instances.SharedFrameworkOperator.Get_HashCode(this);
+
+        public int CompareTo(SharedFrameworkDescriptor other)
+            => Instances.SharedFrameworkOperator.Compare(this, other);
     }
 }
 

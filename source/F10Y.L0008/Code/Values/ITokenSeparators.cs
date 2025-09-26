@@ -9,8 +9,14 @@ namespace F10Y.L0008
     public partial interface ITokenSeparators
     {
         /// <summary>
+        /// The token separator to use in dotnet pack names (example: "Microsoft.NETCore.App").
+        /// <para><inheritdoc cref="L0000.IStrings.Period" path="descendant::description"/></para>
+        /// </summary>
+        public string For_DotnetPackName => Instances.Strings.Period;
+
+        /// <summary>
         /// The token separator for target framework monikers.
-        /// <para><inheritdoc cref="F10Y.L0000.IStrings.Dash" path="descendant::description"/></para>
+        /// <para><inheritdoc cref="L0000.IStrings.Dash" path="descendant::description"/></para>
         /// </summary>
         public string For_TargetFrameworkMoniker => Instances.Strings.Dash;
 
@@ -19,7 +25,7 @@ namespace F10Y.L0008
 
         /// <summary>
         /// The token separator for version strings (example: "4.5.1").
-        /// <para><inheritdoc cref="F10Y.L0000.IStrings.Period" path="descendant::description"/></para>
+        /// <para><inheritdoc cref="L0000.IStrings.Period" path="descendant::description"/></para>
         /// </summary>
         public string For_Version => Instances.Strings.Period;
     }

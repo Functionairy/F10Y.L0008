@@ -10,10 +10,54 @@ namespace F10Y.L0008
     [FunctionsMarker]
     public partial interface ITargetFrameworkMonikerOperator
     {
+        string Get_TargetFrameworkMoniker_ForDirectoryName(string targetFrameworkMoniker_DirectoryName)
+            // It's just the TFM.
+            => targetFrameworkMoniker_DirectoryName;
+
+        string Get_DirectoryName_ForTargetFrameworkMoniker(string targetFrameworkMoniker)
+            // It's just the TFM.
+            => targetFrameworkMoniker;
+
+        string Get_DirectoryName(string targetFrameworkMoniker)
+            => this.Get_DirectoryName_ForTargetFrameworkMoniker(targetFrameworkMoniker);
+
+        string Get_TargetFrameworkMoniker_ForPack(
+            string pack_Name,
+            Version version)
+        {
+            var sharedFramework_Name = Instances.DotnetPackOperator.Get_SharedFrameworkName_FromPackName(pack_Name);
+
+            var output = this.Get_TargetFrameworkMoniker_ForSharedFramework(
+                sharedFramework_Name,
+                version);
+
+            return output;
+        }
+
+        string Get_TargetFrameworkMoniker_ForSharedFramework(
+            string pack_Name,
+            Version version)
+        {
+            // The pack name is irrelevant.
+
+            // Switch on 
+            var output = version.Major switch
+            {
+                5 => Instances.TargetFrameworkMonikers.net5_0,
+                6 => Instances.TargetFrameworkMonikers.net6_0,
+                7 => Instances.TargetFrameworkMonikers.net7_0,
+                8 => Instances.TargetFrameworkMonikers.net8_0,
+                9 => Instances.TargetFrameworkMonikers.net9_0,
+                _ => throw Instances.ExceptionOperator.From($"No target framework moniker available for .NET major version {version.Major}.")
+            };
+
+            return output;
+        }
+
         /// <summary>
         /// Case-insensitive match.
         /// </summary>
-        public bool Equals(
+        bool Equals(
             string targetFrameworkMoniker_A,
             string targetFrameworkMoniker_B)
             => Instances.StringOperator.Are_Equal_CaseInsensitive(
@@ -24,7 +68,7 @@ namespace F10Y.L0008
         /// Sometimes target framework monikers have trailing additional tokens (like "net8.0-windows").
         /// This method returns the tokenless "net8.0" moniker if the moniker has additional tokens.
         /// </summary>
-        public string Ensure_IsTokenless(string targetFrameworkMoniker)
+        string Ensure_IsTokenless(string targetFrameworkMoniker)
         {
             var tokens = this.Get_Tokens(targetFrameworkMoniker);
 
@@ -35,7 +79,7 @@ namespace F10Y.L0008
         /// <summary>
         /// The the target framework moniker a .NET standard target framework moniker? (e.g. "netstandard2.1")
         /// </summary>
-        public bool Is_Netstandard(string targetFrameworkMoniker)
+        bool Is_Netstandard(string targetFrameworkMoniker)
         {
             // If the target framework moniker starts with "netstandard", it's .NET Standard.
             var output = Instances.StringOperator.Starts_With(
@@ -45,7 +89,7 @@ namespace F10Y.L0008
             return output;
         }
 
-        public TargetFrameworkMonikerDescriptor Parse_ToDescriptor(
+        TargetFrameworkMonikerDescriptor Parse_ToDescriptor(
             string targetFrameworkMoniker,
             OverloadToken<NotNullOrEmpty> notNullOrEmptyToken)
         {
@@ -137,14 +181,14 @@ namespace F10Y.L0008
             return descriptor;
         }
 
-        public TargetFrameworkMonikerDescriptor Parse_ToDescriptor(
+        TargetFrameworkMonikerDescriptor Parse_ToDescriptor(
             string targetFrameworkMoniker,
             out OverloadToken<NotNullOrEmpty> notNullOrEmptyToken)
             => this.Parse_ToDescriptor(
                 targetFrameworkMoniker,
                 notNullOrEmptyToken);
 
-        public string[] Get_Tokens(string targetFrameworkMoniker)
+        string[] Get_Tokens(string targetFrameworkMoniker)
         {
             var output = Instances.StringOperator.Split(
                 Instances.TokenSeparators.For_TargetFrameworkMoniker,
