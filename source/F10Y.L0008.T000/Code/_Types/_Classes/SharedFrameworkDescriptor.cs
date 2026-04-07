@@ -3,7 +3,7 @@
 using F10Y.T0004;
 
 
-namespace F10Y.L0008
+namespace F10Y.L0008.T000
 {
     /// <summary>
     /// Describes a shared framework (like "Microsoft.NETCore.App", version 8.0.0, that lives in a directory like "C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.17\").
@@ -11,6 +11,9 @@ namespace F10Y.L0008
     /// <remarks>
     /// There is another type called a runtime target descriptor, but while similar, the form of a runtime target descriptor is different: ".NETCoreApp,Version=v8.0".
     /// It contains a runtime target name instead of a shared framework name.
+    /// <para>
+    /// For a version of this type where the <see cref="Version"/> property is a <see cref="string"/>, see <see cref="N001.SharedFrameworkDescriptor"/>.
+    /// </para>
     /// </remarks>
     [DataTypeMarker]
     public class SharedFrameworkDescriptor :
@@ -18,7 +21,7 @@ namespace F10Y.L0008
         IComparable<SharedFrameworkDescriptor>
     {
         /// <summary>
-        /// Values like "Microsoft.NETCore.App", see <see cref="Z000.ISharedFrameworkNames"/>.
+        /// Values like "Microsoft.NETCore.App", see "F10Y.L0008.Z000.ISharedFrameworkNames".
         /// </summary>
         public string Name { get; set; }
 
@@ -58,13 +61,16 @@ namespace F10Y.L0008
 }
 
 
-namespace F10Y.L0008.N001
+namespace F10Y.L0008.T000.N001
 {
+    /// <summary>
+    /// Similar to the <see cref="T000.SharedFrameworkDescriptor"/> type, except that the <see cref="Version"/> property is a <see cref="string"/>.
+    /// </summary>
     [DataTypeMarker]
     public class SharedFrameworkDescriptor
     {
         /// <summary>
-        /// Values like "Microsoft.NETCore.App", see <see cref="Z000.ISharedFrameworkNames"/>.
+        /// Values like "Microsoft.NETCore.App", see "F10Y.L0008.Z000.ISharedFrameworkNames".
         /// </summary>
         public string Name { get; set; }
 
@@ -73,7 +79,7 @@ namespace F10Y.L0008.N001
 
         public SharedFrameworkDescriptor()
         {
-            // Do nothin.
+            // Do nothing.
         }
 
         public SharedFrameworkDescriptor(

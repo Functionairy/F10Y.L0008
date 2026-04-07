@@ -22,6 +22,9 @@ namespace F10Y.L0008
         /// <inheritdoc cref="IDotnetOperator.Get_DotnetDirectoryPath()"/>
         string dotnet => Instances.DotnetOperator.Get_DotnetDirectoryPath();
 
+        /// <inheritdoc cref="IDotnetOperator.Get_Packs_DirectoryPath"/>
+        string dotnet_packs => Instances.DotnetOperator.Get_Packs_DirectoryPath();
+
         /// <inheritdoc cref="IDotnetOperator.Get_SharedFrameworks_DirectoryPath"/>
         string dotnet_shared => Instances.DotnetOperator.Get_SharedFrameworks_DirectoryPath();
 

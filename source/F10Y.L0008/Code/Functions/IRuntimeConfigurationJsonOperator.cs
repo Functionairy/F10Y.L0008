@@ -13,7 +13,7 @@ namespace F10Y.L0008
     {
         JsonObject Generate_RuntimeConfiguration_ForSharedFrameworks(
             string targetFrameworkMoniker,
-            IEnumerable<N001.SharedFrameworkDescriptor> sharedFrameworks)
+            IEnumerable<T000.N001.SharedFrameworkDescriptor> sharedFrameworks)
         {
             var sharedFrameworks_Converted = sharedFrameworks
                 .Select(Instances.SharedFrameworkOperator.Convert)

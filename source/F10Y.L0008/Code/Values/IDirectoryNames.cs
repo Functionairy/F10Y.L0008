@@ -23,17 +23,17 @@ namespace F10Y.L0008
         /// <summary>
         /// <para><value>packs</value></para>
         /// </summary>
-        public string packs => "packs";
+        string packs => "packs";
 
         /// <summary>
         /// <para><value>ref</value></para>
         /// </summary>
-        public string @ref => "ref";
+        string @ref => "ref";
 
         /// <summary>
         /// <para><value>shared</value></para>
         /// </summary>
-        public string shared => "shared";
+        string shared => "shared";
 
 #pragma warning restore IDE1006 // Naming Styles
     }
