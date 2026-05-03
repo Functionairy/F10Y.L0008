@@ -38,7 +38,7 @@ namespace F10Y.L0008
             var sharedFramework_DirectoryName = Instances.SharedFrameworkOperator.Get_SharedFramework_DirectoryName_FromName(sharedFramework.Name);
             var version_DiretoryName = Instances.SharedFrameworkOperator.Get_Version_DirectoryName_FromVersion(sharedFramework.Version);
 
-            var output = Instances.PathOperator.Combine(
+            var output = Instances.PathOperator.Combine_Simple(
                 Instances.DirectoryPaths.dotnet_shared,
                 sharedFramework_DirectoryName,
                 version_DiretoryName);
